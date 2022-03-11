@@ -54,10 +54,18 @@ extern "C" int fileno(FILE *stream);
 [0-9]+  { yylval.number=strtod(yytext,0); return T_INTEGER;}
 [0-9]+([.][0-9]*)?    { yylval.number=strtod(yytext, 0); return T_DECIMAL; }
 
-[ \t\r\n]+    {;} //do we want to skip this or could it be useful information for the parser?
+"while" { return T_WHILE; } 
+
+"void"  { return T_VOID; }
+"int"   { return T_INT; } 
+"bool"  { return T_BOOL; } //there's lots more of these for functions, need to find a list and add them in
+
+[0-9]+  { yylval.number=strtod(yytext,0); return T_INTEGER;}
+[0-9]+([.][0-9]*)?    { yylval.number=strtod(yytext, 0); return T_DECIMAL; }
+
+[ \t\r\n]+    {;} //need to think about how we want to lex these so that it's in a form that's most useful for the parser
 
 .             { fprintf(stderr, "Invalid token\n"); exit(1); }
-
 
 %%
 
