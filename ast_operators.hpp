@@ -53,7 +53,7 @@ protected:
     virtual const char *getOpcode() const override
     { return "<<"; } //what is meant by get opcode?
 public:
-    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
+    ShiftLeftOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
@@ -74,7 +74,7 @@ protected:
     virtual const char *getOpcode() const override
     { return ">>"; } //what is meant by get opcode?
 public:
-    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
+    ShiftRightOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
@@ -94,7 +94,7 @@ protected:
     virtual const char *getOpcode() const override
     { return "^"; } //what is meant by get opcode?
 public:
-    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
+    BitXorOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
@@ -115,7 +115,7 @@ protected:
     virtual const char *getOpcode() const override
     { return "|"; } //what is meant by get opcode?
 public:
-    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
+    BitOrOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
@@ -136,7 +136,7 @@ protected:
     virtual const char *getOpcode() const override
     { return "&"; } //what is meant by get opcode?
 public:
-    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
+    BitAndOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
@@ -157,7 +157,7 @@ protected:
     virtual const char *getOpcode() const override
     { return "&&"; } //what is meant by get opcode?
 public:
-    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
+    LogAndOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
@@ -178,7 +178,7 @@ protected:
     virtual const char *getOpcode() const override
     { return "||"; }
 public:
-    AddOperator(ExpressionPtr _left, ExpressionPtr _right)
+    LogOrOperator(ExpressionPtr _left, ExpressionPtr _right)
         : Operator(_left, _right)
     {}
     
