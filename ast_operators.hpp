@@ -5,8 +5,6 @@
 #include <iostream>
 #include <cmath>
 
-//to do: LOG_AND, LOG_OR, bitwise and, bitwise or, bitwise xor, shift left, shift right,  
-//unary: logical not, modulus, bitwise not, 
 
 class Operator
     : public Expression
@@ -43,6 +41,27 @@ public:
         dst<<" ";
         right->print(dst);
         dst<<" )";
+    }
+};
+
+class ModOperator
+    : public Operator
+{
+protected:
+    virtual const char *getOpcode() const override
+    { return "%"; } //what is meant by get opcode?
+public:
+    ModOperator(ExpressionPtr _left, ExpressionPtr _right)
+        : Operator(_left, _right)
+    {}
+    
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override 
+    {
+        double vl=getLeft()->evaluate(bindings);
+        double vr=getRight()->evaluate(bindings);
+        return vl%vr;
     }
 };
 
@@ -126,6 +145,27 @@ public:
         double vl=getLeft()->evaluate(bindings);
         double vr=getRight()->evaluate(bindings);
         return vl|vr;
+    }
+};
+
+class AndOperator
+    : public Operator
+{
+protected:
+    virtual const char *getOpcode() const override
+    { return "+"; } //what is meant by get opcode?
+public:
+    BitOrOperator(ExpressionPtr _left, ExpressionPtr _right)
+        : Operator(_left, _right)
+    {}
+    
+    virtual double evaluate(
+        const std::map<std::string,double> &bindings
+    ) const override 
+    {
+        double vl=getLeft()->evaluate(bindings);
+        double vr=getRight()->evaluate(bindings);
+        return vl+vr;
     }
 };
 
